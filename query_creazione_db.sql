@@ -98,11 +98,9 @@ CREATE TABLE strumento_di_bordo_satellite(
 CREATE TABLE rilevazione_satellite (
     satellite_nome VARCHAR(255) NOT NULL,
     strumento_di_bordo_nome VARCHAR(255) NOT NULL,
-    rilevazione_valore BIGINT NOT NULL,
     rilevazione_data DATETIME NOT NULL,
     CONSTRAINT fk_satellite_nome_rilevazione_satellite FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
     CONSTRAINT fk_strumento_di_bordo_nome_rilevazione_satellite FOREIGN KEY (strumento_di_bordo_nome) REFERENCES strumento_di_bordo(nome),
-    CONSTRAINT fk_rilevazione_valore_rilevazione_satellite FOREIGN KEY (rilevazione_valore) REFERENCES rilevazione(valore),
     CONSTRAINT fk_rilevazione_data_rilevazione_satellite FOREIGN KEY (rilevazione_data) REFERENCES rilevazione(data),
     CONSTRAINT pk_rilevazione_satellite PRIMARY KEY (
         satellite_nome,
