@@ -1,0 +1,27 @@
+Vincolo di controllo sulla data di lancio del satellite: 
+assicura che la data di lancio di un satellite sia precedente alla data
+attuale o al massimo alla data di oggi. In questo modo si evita l'inserimento 
+di date future per i lanci dei satelliti.
+
+Vincolo di controllo sulla data di rilevazione:
+garantisce che la data di una rilevazione sia successiva alla data di lancio 
+del satellite corrispondente. . Questo evita che vengano inserite rilevazioni 
+prima del lancio del satellite.
+
+Vincolo di controllo sulla tipologia di guasto: 
+permette l'inserimento di tipi di guasto solo se esistono nella tabella "tipo_guasto".
+Questo vincolo garantisce che i guasti siano classificati correttamente e non siano 
+presenti tipologie non valide.
+
+Vincolo di controllo sulla data di inizio e fine di una missione:
+assicura che la data di inizio di una missione sia precedente alla data di fine.
+In questo modo si evitano missioni con date inconsistenti o sovrapposte.
+
+Vincolo di controllo sulle dimensioni dei satelliti:
+limita le dimensioni dei satelliti ad un valore massimo specificato, ad esempio 100 metri quadrati.
+In questo modo si evita l'inserimento di satelliti con dimensioni non realistiche o fuori dai limiti 
+consentiti.
+
+Vincolo di controllo sulla relazione tra tipo operatore e operatore:
+assicura che il tipo di operatore associato a un operatore sia valido e esista nella tabella "tipo_operatore".
+Questo vincolo impedisce l'inserimento di tipi di operatore non validi o inesistenti per gli operatori.
