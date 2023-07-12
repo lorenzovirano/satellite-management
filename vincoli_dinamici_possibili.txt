@@ -18,7 +18,7 @@ assicura che la data di inizio di una missione sia precedente alla data di fine.
 In questo modo si evitano missioni con date inconsistenti o sovrapposte.
 
 Vincolo di controllo sulle dimensioni dei satelliti:
-limita le dimensioni dei satelliti ad un valore massimo specificato, ad esempio 100 metri quadrati.
+limita le dimensioni dei satelliti ad un valore massimo specificato, ad esempio minimo 0.1 massimo 110 metri.
 In questo modo si evita l'inserimento di satelliti con dimensioni non realistiche o fuori dai limiti 
 consentiti.
 
