@@ -44,6 +44,15 @@ BEGIN
     END IF;
 END //
 
+-- Vincolo di controllo sul peso dei satelliti
+CREATE TRIGGER check_peso_satellite BEFORE INSERT ON satellite
+FOR EACH ROW
+BEGIN
+    IF NEW.peso < 0 THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Il peso del satellite devono essere comprese maggiore di 0';
+    END IF;
+END //
+
 -- Vincolo di controllo sulla relazione tra tipo operatore e operatore
 CREATE TRIGGER check_tipo_operatore BEFORE INSERT ON operatore
 FOR EACH ROW
