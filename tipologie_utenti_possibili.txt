@@ -4,7 +4,6 @@ Questi utenti potrebbero utilizzare il database per registrare informazioni sui 
 come il nome, le dimensioni, il periodo orbitale, la data di lancio e il peso. Inoltre, 
 potrebbero gestire i dati relativi alle missioni, alle rilevazioni e ai guasti dei satelliti.
 
-
 Membro dell'equipaggio: Gli astronauti o i membri dell'equipaggio delle 
 missioni spaziali potrebbero essere considerati utenti del sistema. Potrebbero 
 essere registrati nel database tramite la tabella "crew" e potrebbero avere accesso 
