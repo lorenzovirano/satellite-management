@@ -1,29 +1,23 @@
-CREATE TABLE tipo_operatore (tipo VARCHAR(255) PRIMARY KEY NOT NULL);
 CREATE TABLE operatore (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     nazionalita VARCHAR(255) NOT NULL,
     data_di_fondazione DATETIME NOT NULL,
-    tipo_operatore_tipo VARCHAR(255) NOT NULL,
-    CONSTRAINT fk_tipo_operatore_tipo FOREIGN KEY (tipo_operatore_tipo) REFERENCES tipo_operatore(tipo)
+    tipo VARCHAR(255) NOT NULL
 );
 CREATE TABLE satellite (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     dimensioni BIGINT NOT NULL,
-    periodo_orbitale TIME NOT NULL,
-    data_di_lancio DATETIME NOT NULL,
+    periodo_orbitale TIME,
+    data_di_lancio DATETIME,
     peso BIGINT NOT NULL,
     operatore_nome VARCHAR(255) NOT NULL,
-    tipo_operatore_tipo VARCHAR(255) NOT NULL,
-    CONSTRAINT fk_operatore_nome_satellite FOREIGN KEY (operatore_nome) REFERENCES operatore(nome),
-    CONSTRAINT fk_tipo_operatore_tipo_satellite FOREIGN KEY (tipo_operatore_tipo) REFERENCES operatore(tipo_operatore_tipo)
+    CONSTRAINT fk_operatore_nome_satellite FOREIGN KEY (operatore_nome) REFERENCES operatore(nome)
 );
 CREATE TABLE stazione_terrestre (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     longitudine BIGINT NOT NULL,
     latitudine BIGINT NOT NULL,
-    tipo_operatore_tipo VARCHAR(255) NOT NULL,
     operatore_nome VARCHAR(255) NOT NULL,
-    CONSTRAINT fk_tipo_operatore_tipo_stazione_terrestre FOREIGN KEY (tipo_operatore_tipo) REFERENCES tipo_operatore(tipo),
     CONSTRAINT fk_operatore_nome_stazione_terrestre FOREIGN KEY (operatore_nome) REFERENCES operatore(nome)
 );
 CREATE TABLE crew (
@@ -70,23 +64,25 @@ CREATE TABLE rilevazione (
     coordinate_orbitali_inclinazione BIGINT NOT NULL,
     coordinate_orbitali_eccentricità BIGINT NOT NULL,
     strumento_di_bordo_nome VARCHAR(255) NOT NULL,
+    satellite_nome VARCHAR(255) NOT NULL,
     CONSTRAINT fk_strumento_di_bordo_nome_rilevazione FOREIGN KEY (strumento_di_bordo_nome) REFERENCES strumento_di_bordo(nome),
     CONSTRAINT fk_coordinate_orbitali_rilevazione FOREIGN KEY (
         coordinate_orbitali_altitudine,
         coordinate_orbitali_inclinazione,
         coordinate_orbitali_eccentricità
     ) REFERENCES coordinate_orbitali(altitudine, inclinazione, eccentricità),
+    CONSTRAINT fk_satellite_nome FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
     CONSTRAINT pk_rilevazione PRIMARY KEY (data, strumento_di_bordo_nome)
 );
 CREATE TABLE tipo_guasto (tipo VARCHAR(255) PRIMARY KEY NOT NULL);
 CREATE TABLE guasto (
     data_guasto DATETIME NOT NULL,
-    data_riparazione DATETIME NOT NULL,
+    data_riparazione DATETIME,
     tipo_guasto_tipo VARCHAR(255) NOT NULL,
     satellite_nome VARCHAR(255) NOT NULL,
     CONSTRAINT pk_guasto PRIMARY KEY (data_guasto, tipo_guasto_tipo),
     CONSTRAINT fk_tipo_guasto FOREIGN KEY (tipo_guasto_tipo) REFERENCES tipo_guasto(tipo),
-    CONSTRAINT fk_satellite_nome FOREIGN KEY (satellite_nome) REFERENCES satellite(nome)
+    CONSTRAINT fk_satellite_nome_guasto FOREIGN KEY (satellite_nome) REFERENCES satellite(nome)
 );
 CREATE TABLE strumento_di_bordo_satellite(
     satellite_nome VARCHAR(255) NOT NULL,
@@ -94,17 +90,4 @@ CREATE TABLE strumento_di_bordo_satellite(
     CONSTRAINT fk_satellite_nome_strumento_di_bordo_satellite FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
     CONSTRAINT fk_strumento_di_bordo_nome_strumento_di_bordo_satellite FOREIGN KEY (strumento_di_bordo_nome) REFERENCES strumento_di_bordo(nome),
     CONSTRAINT pk_strumento_di_bordo_satellite PRIMARY KEY (satellite_nome, strumento_di_bordo_nome)
-);
-CREATE TABLE rilevazione_satellite (
-    satellite_nome VARCHAR(255) NOT NULL,
-    strumento_di_bordo_nome VARCHAR(255) NOT NULL,
-    rilevazione_data DATETIME NOT NULL,
-    CONSTRAINT fk_satellite_nome_rilevazione_satellite FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
-    CONSTRAINT fk_strumento_di_bordo_nome_rilevazione_satellite FOREIGN KEY (strumento_di_bordo_nome) REFERENCES strumento_di_bordo(nome),
-    CONSTRAINT fk_rilevazione_data_rilevazione_satellite FOREIGN KEY (rilevazione_data) REFERENCES rilevazione(data),
-    CONSTRAINT pk_rilevazione_satellite PRIMARY KEY (
-        satellite_nome,
-        strumento_di_bordo_nome,
-        rilevazione_data
-    )
 );

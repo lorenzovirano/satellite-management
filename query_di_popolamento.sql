@@ -1,12 +1,5 @@
--- Tipo operatore
-INSERT INTO tipo_operatore (tipo) 
-VALUES 
-    ("Operatore Governativo"),
-    ("Operatore Commerciale"),
-    ("Operatore Di Ricerca");
-
 -- Operatore
-INSERT INTO operatore (nome, nazionalita, data_di_fondazione, tipo_operatore_tipo) 
+INSERT INTO operatore (nome, nazionalita, data_di_fondazione, tipo) 
 VALUES 
     ("SpaceX", "USA", "2002-03-14", "Operatore Commerciale"),
     ("Boeing", "USA", "1916-07-15", "Operatore Commerciale"),
@@ -25,42 +18,42 @@ VALUES
     ("Politecnico di Torino", "Italia", "1859-11-09", "Operatore Di Ricerca");
 
 -- Satelliti
-INSERT INTO satellite (nome, dimensioni, periodo_orbitale, data_di_lancio, peso, operatore_nome, tipo_operatore_tipo)
+INSERT INTO satellite (nome, dimensioni, periodo_orbitale, data_di_lancio, peso, operatore_nome)
 VALUES
-    ('GOES-16', 100, '01:30:00', '2022-03-12 08:00:00', 2000, 'SpaceX', 'Operatore Commerciale'),
-    ('Hubble Space Telescope', 80, '02:15:00', '2021-11-20 12:30:00', 1500, 'Boeing', 'Operatore Commerciale'),
-    ('ISS', 100, '03:45:00', '2022-05-30 16:45:00', 1800, 'MIT', 'Operatore Di Ricerca'),
-    ('Landsat 8', 100, '01:30:00', '2022-08-25 09:15:00', 2500, 'Japan Aerospace Exploration Agency', 'Operatore Governativo'),
-    ('GPS IIF-12', 100, '02:45:00', '2022-09-18 14:00:00', 1900, 'United Launch Alliance', 'Operatore Commerciale'),
-    ('Galileo 17', 90, '01:00:00', '2022-06-10 06:30:00', 1700, 'Arianespace', 'Operatore Commerciale'),
-    ('Chandra X-ray Observatory', 102, '02:30:00', '2022-07-18 10:45:00', 2200, 'Roscosmos', 'Operatore Governativo'),
-    ('TerraSAR-X', 16, '03:15:00', '2023-01-05 13:15:00', 2700, 'China National Space Administration', 'Operatore Governativo'),
-    ('Iridium 6', 14, '02:00:00', '2022-09-10 07:30:00', 2300, 'Standford University', 'Operatore Di Ricerca'),
-    ('Venus Express', 109, '01:30:00', '2022-12-10 08:00:00', 2000, 'Blue Origin', 'Operatore Commerciale'),
-    ('XMM-Newton', 102, '02:15:00', '2022-02-01 12:30:00', 1800, 'Airbus Defence and Space', 'Operatore Commerciale'),
-    ('RADARSAT-2', 90, '01:00:00', '2023-04-05 06:30:00', 1500, 'European Space Agency', 'Operatore Governativo'),
-    ('NOAA-19', 11, '02:45:00', '2022-07-14 14:00:00', 2100, 'Rocket Lab', 'Operatore Commerciale'),
-    ('Spitzer Space Telescope', 13, '02:30:00', '2022-10-15 10:45:00', 2400, 'National Aeronautics and Space Administration', 'Operatore Governativo'),
-    ('Tiangong-2', 15, '03:15:00', '2022-09-02 13:15:00', 2800, 'Politecnico di Torino', 'Operatore Di Ricerca');
+    ('GOES-16', 100, '01:30:00', '2022-03-12 08:00:00', 2000, 'SpaceX'),
+    ('Hubble Space Telescope', 80, '02:15:00', '2021-11-20 12:30:00', 1500, 'Boeing'),
+    ('ISS', 100, '03:45:00', '2022-05-30 16:45:00', 1800, 'MIT'),
+    ('Landsat 8', 100, '01:30:00', '2022-08-25 09:15:00', 2500, 'Japan Aerospace Exploration Agency'),
+    ('GPS IIF-12', 100, '02:45:00', '2022-09-18 14:00:00', 1900, 'United Launch Alliance'),
+    ('Galileo 17', 90, '01:00:00', '2022-06-10 06:30:00', 1700, 'Arianespace'),
+    ('Chandra X-ray Observatory', 102, '02:30:00', '2022-07-18 10:45:00', 2200, 'Roscosmos'),
+    ('TerraSAR-X', 16, '03:15:00', '2023-01-05 13:15:00', 2700, 'China National Space Administration'),
+    ('Iridium 6', 14, '02:00:00', '2022-09-10 07:30:00', 2300, 'Standford University'),
+    ('Venus Express', 109, '01:30:00', '2022-12-10 08:00:00', 2000, 'Blue Origin'),
+    ('XMM-Newton', 102, '02:15:00', '2022-02-01 12:30:00', 1800, 'Airbus Defence and Space'),
+    ('RADARSAT-2', 90, '01:00:00', '2023-04-05 06:30:00', 1500, 'European Space Agency'),
+    ('NOAA-19', 11, '02:45:00', '2022-07-14 14:00:00', 2100, 'Rocket Lab'),
+    ('Spitzer Space Telescope', 13, '02:30:00', '2022-10-15 10:45:00', 2400, 'National Aeronautics and Space Administration'),
+    ('Tiangong-2', 15, '03:15:00', '2022-09-02 13:15:00', 2800, 'Politecnico di Torino');
 
 -- Stazioni terrestri
-INSERT INTO stazione_terrestre (nome, longitudine, latitudine, tipo_operatore_tipo, operatore_nome)
+INSERT INTO stazione_terrestre (nome, longitudine, latitudine, operatore_nome)
 VALUES
-    ('Goldstone Deep Space Communications Complex', -116.895, 35.400, 'Operatore Commerciale', 'SpaceX'),
-    ('European Space Operations Centre', 8.422, 50.000, 'Operatore Commerciale', 'Boeing'),
-    ('Guiana Space Centre', -52.768, 5.236, 'Operatore Di Ricerca', 'MIT'),
-    ('John F. Kennedy Space Center', -80.605, 28.392, 'Operatore Governativo', 'Japan Aerospace Exploration Agency'),
-    ('Baikonur Cosmodrome', 63.344, 45.965, 'Operatore Commerciale', 'United Launch Alliance'),
-    ('Tianhe Space Station', 110.467, 40.958, 'Operatore Commerciale', 'Arianespace'),
-    ('Wallops Flight Facility', -75.483, 37.940, 'Operatore Governativo', 'Roscosmos'),
-    ('Jiuquan Satellite Launch Center', 100.286, 40.958, 'Operatore Governativo', 'China National Space Administration'),
-    ('Tanegashima Space Center', 130.987, 30.378, 'Operatore Di Ricerca', 'Standford University'),
-    ('Satish Dhawan Space Centre', 80.234, 13.733, 'Operatore Commerciale', 'Blue Origin'),
-    ('Vandenberg Space Force Base', -120.600, 34.756, 'Operatore Commerciale', 'Airbus Defence and Space'),
-    ('Taiyuan Satellite Launch Center', 112.550, 38.848, 'Operatore Governativo', 'European Space Agency'),
-    ('Kourou Spaceport', -52.768, 5.236, 'Operatore Commerciale', 'Rocket Lab'),
-    ('Xichang Satellite Launch Center', 102.034, 28.246, 'Operatore Governativo', 'National Aeronautics and Space Administration'),
-    ('Alcântara Launch Center', -44.396, -2.370, 'Operatore Di Ricerca', 'Politecnico di Torino');
+    ('Goldstone Deep Space Communications Complex', -116.895, 35.400, 'SpaceX'),
+    ('European Space Operations Centre', 8.422, 50.000,'Boeing'),
+    ('Guiana Space Centre', -52.768, 5.236, 'MIT'),
+    ('John F. Kennedy Space Center', -80.605, 28.392, 'Japan Aerospace Exploration Agency'),
+    ('Baikonur Cosmodrome', 63.344, 45.965, 'United Launch Alliance'),
+    ('Tianhe Space Station', 110.467, 40.958, 'Arianespace'),
+    ('Wallops Flight Facility', -75.483, 37.940, 'Roscosmos'),
+    ('Jiuquan Satellite Launch Center', 100.286, 40.958, 'China National Space Administration'),
+    ('Tanegashima Space Center', 130.987, 30.378, 'Standford University'),
+    ('Satish Dhawan Space Centre', 80.234, 13.733, 'Blue Origin'),
+    ('Vandenberg Space Force Base', -120.600, 34.756, 'Airbus Defence and Space'),
+    ('Taiyuan Satellite Launch Center', 112.550, 38.848, 'European Space Agency'),
+    ('Kourou Spaceport', -52.768, 5.236, 'Rocket Lab'),
+    ('Xichang Satellite Launch Center', 102.034, 28.246, 'National Aeronautics and Space Administration'),
+    ('Alcântara Launch Center', -44.396, -2.370, 'Politecnico di Torino');
 
 -- Crew
 INSERT INTO crew (nome, data_di_creazione, numero_membri, stazione_terrestre_nome)
@@ -103,21 +96,21 @@ VALUES
 -- Missioni
 INSERT INTO missione (nome, data_inizio, data_fine, tipo_missione_tipo, crew_nome, satellite_nome)
 VALUES
-    ('Apollo 11', '1969-07-20 08:00:00', '1969-07-24 16:00:00', 'Esplorazione', 'Apollo 11', 'GOES-16'),
-    ('Discovery 7', '1991-11-26 12:00:00', '1991-11-30 18:00:00', 'Ricerca scientifica', 'Discovery 7', 'Hubble Space Telescope'),
-    ('Expedition 1', '2000-11-02 10:00:00', '2000-11-06 16:00:00', 'Telecomunicazioni', 'Expedition 1', 'ISS'),
-    ('Endeavour 5', '2002-07-26 14:00:00', '2002-07-30 20:00:00', 'Osservazione terrestre', 'Endeavour 5', 'Landsat 8'),
-    ('Soyuz 7', '2010-06-16 09:00:00', '2010-06-20 15:00:00', 'Meteorologia', 'Soyuz 7', 'GPS IIF-12'),
-    ('Shenzhou 9', '2012-06-18 11:00:00', '2012-06-22 17:00:00', 'Navigazione', 'Shenzhou 9', 'Galileo 17'),
-    ('Galaxy 4', '1989-06-15 07:00:00', '1989-06-19 13:00:00', 'Rifornimento spaziale', 'Galaxy 4', 'Chandra X-ray Observatory'),
-    ('Chang Zheng 4', '2002-12-29 13:00:00', '2003-01-02 19:00:00', 'Test tecnologici', 'Chang Zheng 4', 'TerraSAR-X'),
-    ('Hayabusa 2', '2014-12-03 15:00:00', '2014-12-07 21:00:00', 'Mappatura', 'Hayabusa 2', 'Iridium 6'),
-    ('Mars Orbiter Mission', '2013-11-05 11:00:00', '2013-11-09 17:00:00', 'Studio dell''atmosfera', 'Mars Orbiter Mission', 'Venus Express'),
-    ('Falcon 9', '2010-06-04 09:00:00', '2010-06-08 15:00:00', 'Studio dell''ambiente spaziale', 'Falcon 9', 'XMM-Newton'),
-    ('Long March 7', '2016-06-25 13:00:00', '2016-06-29 19:00:00', 'Studio del clima', 'Long March 7', 'RADARSAT-2'),
-    ('Vostok 1', '1961-04-12 06:00:00', '1961-04-16 12:00:00', 'Studio delle risorse naturali', 'Vostok 1', 'NOAA-19'),
-    ('Tiangong 2', '2016-09-15 10:00:00', '2016-09-19 16:00:00', 'Missioni umane', 'Tiangong 2', 'Spitzer Space Telescope'),
-    ('Amazonia-1', '2021-02-28 08:00:00', '2021-03-04 14:00:00', 'Missioni robotiche', 'Amazonia-1', 'Tiangong-2');
+    ('Apollo 11', '2022-05-12 08:00:00', '2023-05-12 08:00:00', 'Esplorazione', 'Apollo 11', 'GOES-16'),
+    ('Discovery 7', '2021-11-25 12:30:00', '2022-11-25 12:30:00', 'Ricerca scientifica', 'Discovery 7', 'Hubble Space Telescope'),
+    ('Expedition 1', '2022-07-30 16:45:00', '2023-07-30 16:45:00', 'Telecomunicazioni', 'Expedition 1', 'ISS'),
+    ('Endeavour 5', '2022-08-30 09:15:00', '2023-09-30 09:15:00', 'Osservazione terrestre', 'Endeavour 5', 'Landsat 8'),
+    ('Soyuz 7', '2022-10-18 14:00:00', '2023-09-10 14:00:00', 'Meteorologia', 'Soyuz 7', 'GPS IIF-12'),
+    ('Shenzhou 9', '2022-06-15 06:30:00', '2023-07-10 06:30:00', 'Navigazione', 'Shenzhou 9', 'Galileo 17'),
+    ('Galaxy 4', '2022-08-18 10:45:00', '2023-04-18 10:45:00', 'Rifornimento spaziale', 'Galaxy 4', 'Chandra X-ray Observatory'),
+    ('Chang Zheng 4', '2023-01-05 13:15:00', NULL, 'Test tecnologici', 'Chang Zheng 4', 'TerraSAR-X'),
+    ('Hayabusa 2', '2022-10-10 07:30:00', '2023-06-10 07:30:00', 'Mappatura', 'Hayabusa 2', 'Iridium 6'),
+    ('Mars Orbiter Mission', '2022-12-15 08:00:00', '2023-01-10 08:00:00', 'Studio dell''atmosfera', 'Mars Orbiter Mission', 'Venus Express'),
+    ('Falcon 9', '2022-03-10 12:30:00', '2023-07-01 12:30:00', 'Studio dell''ambiente spaziale', 'Falcon 9', 'XMM-Newton'),
+    ('Long March 7', '2023-04-05 06:30:00', NULL, 'Studio del clima', 'Long March 7', 'RADARSAT-2'),
+    ('Vostok 1', '2022-07-16 14:00:00', NULL, 'Studio delle risorse naturali', 'Vostok 1', 'NOAA-19'),
+    ('Tiangong 2', '2022-11-15 10:45:00', NULL, 'Missioni umane', 'Tiangong 2', 'Spitzer Space Telescope'),
+    ('Amazonia-1', '2022-10-02 13:15:00', NULL, 'Missioni robotiche', 'Amazonia-1', 'Tiangong-2');
 
 -- Strumenti di bordo
 INSERT INTO strumento_di_bordo (nome, funzionalita)
@@ -159,23 +152,23 @@ VALUES
     (3800, 240, 3.0, 'Tiangong-2');
 
 -- Rilevazione
-INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome)
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome)
 VALUES
-    (150, '2012-05-10 08:00:00', 800, 30, 0.2, 'Radar Altimeter'),
-    (220, '2002-06-12 09:30:00', 1500, 75, 0.8, 'Multispectral Imager'),
-    (180, '2021-07-14 11:15:00', 1200, 60, 0.6, 'Thermal Infrared Sensor'),
-    (300, '2022-08-16 13:45:00', 2800, 165, 2.0, 'Synthetic Aperture Radar'),
-    (250, '2007-09-18 15:30:00', 1800, 90, 1.0, 'Global Navigation Satellite System'),
-    (170, '2023-01-20 17:00:00', 1000, 45, 0.4, 'Scatterometer'),
-    (190, '2020-02-22 18:45:00', 3400, 210, 2.6, 'Radiometer'),
-    (260, '2023-03-24 20:15:00', 2200, 120, 1.4, 'Spectrometer'),
-    (240, '2023-05-26 22:00:00', 2600, 150, 1.8, 'Lidar'),
-    (280, '2003-07-28 23:30:00', 2000, 105, 1.2, 'Hyperspectral Imager'),
-    (210, '2023-09-30 01:15:00', 3000, 180, 2.2, 'Magnetometer'),
-    (270, '1997-11-01 02:45:00', 3200, 195, 2.4, 'X-ray Spectrometer'),
-    (230, '2023-12-03 04:30:00', 2400, 135, 1.6, 'Visible and Infrared Imaging Spectrometer'),
-    (200, '2004-02-04 06:00:00', 3600, 225, 2.8, 'Cloud Profiling Radar'),
-    (290, '2006-03-07 07:45:00', 3800, 240, 3.0, 'Microwave Radiometer');
+    (150, '2022-05-12 09:00:00', 800, 30, 0.2, 'Radar Altimeter', 'GOES-16'),
+    (220, '2021-12-25 11:30:00', 1500, 75, 0.8, 'Multispectral Imager', 'Hubble Space Telescope'),
+    (180, '2022-07-30 18:45:00', 1200, 60, 0.6, 'Thermal Infrared Sensor', 'ISS'),
+    (300, '2022-09-01 09:15:00', 2800, 165, 2.0, 'Synthetic Aperture Radar', 'Landsat 8'),
+    (250, '2022-10-19 12:00:00', 1800, 90, 1.0, 'Global Navigation Satellite System', 'GPS IIF-12'),
+    (170, '2022-08-15 06:30:00', 1000, 45, 0.4, 'Scatterometer', 'Galileo 17'),
+    (190, '2022-10-18 11:45:00', 3400, 210, 2.6, 'Radiometer', 'Chandra X-ray Observatory'),
+    (260, '2023-02-05 12:15:00', 2200, 120, 1.4, 'Spectrometer', 'TerraSAR-X'),
+    (240, '2022-10-10 09:30:00', 2600, 150, 1.8, 'Lidar', 'Iridium 6'),
+    (280, '2022-12-15 09:00:00', 2000, 105, 1.2, 'Hyperspectral Imager', 'Venus Express'),
+    (210, '2022-05-10 11:30:00', 3000, 180, 2.2, 'Magnetometer', 'XMM-Newton'),
+    (270, '2023-05-05 07:30:00', 3200, 195, 2.4, 'X-ray Spectrometer', 'RADARSAT-2'),
+    (230, '2022-08-16 13:00:00', 2400, 135, 1.6, 'Visible and Infrared Imaging Spectrometer', 'NOAA-19'),
+    (200, '2022-12-15 10:45:00', 3600, 225, 2.8, 'Cloud Profiling Radar', 'Spitzer Space Telescope'),
+    (290, '2022-10-05 11:15:00', 3800, 240, 3.0, 'Microwave Radiometer', 'Tiangong-2');
 
 -- Tipo guasto
 INSERT INTO tipo_guasto (tipo) 
@@ -233,24 +226,3 @@ VALUES
     ('NOAA-19', 'Visible and Infrared Imaging Spectrometer'),
     ('Spitzer Space Telescope', 'Cloud Profiling Radar'),
     ('Tiangong-2', 'Microwave Radiometer');
-
--- Rilevazione_satellite
-INSERT INTO rilevazione_satellite (satellite_nome, strumento_di_bordo_nome, rilevazione_data)
-VALUES
-    ('GOES-16', 'Radar Altimeter', '2012-05-10 08:00:00'),
-    ('Hubble Space Telescope', 'Multispectral Imager', '2002-06-12 09:30:00'),
-    ('ISS', 'Thermal Infrared Sensor', '2021-07-14 11:15:00'),
-    ('Landsat 8', 'Synthetic Aperture Radar', '2022-08-16 13:45:00'),
-    ('GPS IIF-12', 'Global Navigation Satellite System', '2007-09-18 15:30:00'),
-    ('Galileo 17', 'Scatterometer', '2023-01-20 17:00:00'),
-    ('Chandra X-ray Observatory', 'Radiometer', '2020-02-22 18:45:00'),
-    ('TerraSAR-X', 'Spectrometer', '2023-03-24 20:15:00'),
-    ('Iridium 6', 'Lidar', '2023-05-26 22:00:00'),
-    ('Venus Express', 'Hyperspectral Imager', '2003-07-28 23:30:00'),
-    ('XMM-Newton', 'Magnetometer', '2023-09-30 01:15:00'),
-    ('RADARSAT-2', 'X-ray Spectrometer', '1997-11-01 02:45:00'),
-    ('NOAA-19', 'Visible and Infrared Imaging Spectrometer', '2023-12-03 04:30:00'),
-    ('Spitzer Space Telescope', 'Cloud Profiling Radar', '2004-02-04 06:00:00'),
-    ('Tiangong-2', 'Microwave Radiometer', '2006-03-07 07:45:00');
-
-
