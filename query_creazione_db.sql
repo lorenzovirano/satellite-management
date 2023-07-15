@@ -4,6 +4,9 @@ CREATE TABLE operatore (
     data_di_fondazione DATETIME NOT NULL,
     tipo VARCHAR(255) NOT NULL
 );
+
+CREATE INDEX idx_operatore_nome ON operatore(nome);
+
 CREATE TABLE satellite (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     dimensioni BIGINT NOT NULL,
@@ -13,6 +16,10 @@ CREATE TABLE satellite (
     operatore_nome VARCHAR(255) NOT NULL,
     CONSTRAINT fk_operatore_nome_satellite FOREIGN KEY (operatore_nome) REFERENCES operatore(nome)
 );
+
+CREATE INDEX idx_satellite_nome ON satellite(nome);
+CREATE INDEX idx_satellite_operatore_nome ON satellite(operatore_nome);
+
 CREATE TABLE stazione_terrestre (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     longitudine BIGINT NOT NULL,
@@ -20,6 +27,10 @@ CREATE TABLE stazione_terrestre (
     operatore_nome VARCHAR(255) NOT NULL,
     CONSTRAINT fk_operatore_nome_stazione_terrestre FOREIGN KEY (operatore_nome) REFERENCES operatore(nome)
 );
+
+CREATE INDEX idx_stazione_terrestre_nome ON stazione_terrestre(nome);
+CREATE INDEX idx_stazione_terrestre_operatore_nome ON stazione_terrestre(operatore_nome);
+
 CREATE TABLE crew (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     data_di_creazione DATETIME NOT NULL,
@@ -27,7 +38,16 @@ CREATE TABLE crew (
     stazione_terrestre_nome VARCHAR(255) NOT NULL,
     CONSTRAINT fk_stazione_terrestre_nome_crew FOREIGN KEY (stazione_terrestre_nome) REFERENCES stazione_terrestre(nome)
 );
-CREATE TABLE tipo_missione (tipo VARCHAR(255) PRIMARY KEY NOT NULL);
+
+CREATE INDEX idx_crew_nome ON crew(nome);
+CREATE INDEX idx_crew_stazione_terrestre_nome ON crew(stazione_terrestre_nome);
+
+CREATE TABLE tipo_missione (
+    tipo VARCHAR(255) PRIMARY KEY NOT NULL
+);
+
+CREATE INDEX idx_tipo_missione_tipo ON tipo_missione(tipo);
+
 CREATE TABLE missione (
     nome VARCHAR(255) NOT NULL,
     data_inizio DATETIME NOT NULL,
@@ -40,10 +60,20 @@ CREATE TABLE missione (
     CONSTRAINT fk_satellite_nome_missione FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
     CONSTRAINT pk_missione PRIMARY KEY (nome, data_inizio, tipo_missione_tipo)
 );
+
+CREATE INDEX idx_missione_nome ON missione(nome);
+CREATE INDEX idx_missione_data_inizio ON missione(data_inizio);
+CREATE INDEX idx_missione_tipo_missione_tipo ON missione(tipo_missione_tipo);
+CREATE INDEX idx_missione_crew_nome ON missione(crew_nome);
+CREATE INDEX idx_missione_satellite_nome ON missione(satellite_nome);
+
 CREATE TABLE strumento_di_bordo (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     funzionalita VARCHAR(255) NOT NULL
 );
+
+CREATE INDEX idx_strumento_di_bordo_nome ON strumento_di_bordo(nome);
+
 CREATE TABLE coordinate_orbitali (
     altitudine BIGINT NOT NULL,
     inclinazione BIGINT NOT NULL,
@@ -57,6 +87,12 @@ CREATE TABLE coordinate_orbitali (
         satellite_nome
     )
 );
+
+CREATE INDEX idx_coordinate_orbitali_altitudine ON coordinate_orbitali(altitudine);
+CREATE INDEX idx_coordinate_orbitali_inclinazione ON coordinate_orbitali(inclinazione);
+CREATE INDEX idx_coordinate_orbitali_eccentricità ON coordinate_orbitali(eccentricità);
+CREATE INDEX idx_coordinate_orbitali_satellite_nome ON coordinate_orbitali(satellite_nome);
+
 CREATE TABLE rilevazione (
     valore BIGINT NOT NULL,
     data DATETIME NOT NULL,
@@ -74,7 +110,20 @@ CREATE TABLE rilevazione (
     CONSTRAINT fk_satellite_nome FOREIGN KEY (satellite_nome) REFERENCES satellite(nome),
     CONSTRAINT pk_rilevazione PRIMARY KEY (data, strumento_di_bordo_nome)
 );
-CREATE TABLE tipo_guasto (tipo VARCHAR(255) PRIMARY KEY NOT NULL);
+
+CREATE INDEX idx_rilevazione_data ON rilevazione(data);
+CREATE INDEX idx_rilevazione_coordinate_orbitali_altitudine ON rilevazione(coordinate_orbitali_altitudine);
+CREATE INDEX idx_rilevazione_coordinate_orbitali_inclinazione ON rilevazione(coordinate_orbitali_inclinazione);
+CREATE INDEX idx_rilevazione_coordinate_orbitali_eccentricità ON rilevazione(coordinate_orbitali_eccentricità);
+CREATE INDEX idx_rilevazione_strumento_di_bordo_nome ON rilevazione(strumento_di_bordo_nome);
+CREATE INDEX idx_rilevazione_satellite_nome ON rilevazione(satellite_nome);
+
+CREATE TABLE tipo_guasto (
+    tipo VARCHAR(255) PRIMARY KEY NOT NULL
+);
+
+CREATE INDEX idx_tipo_guasto_tipo ON tipo_guasto(tipo);
+
 CREATE TABLE guasto (
     data_guasto DATETIME NOT NULL,
     data_riparazione DATETIME,
@@ -84,6 +133,11 @@ CREATE TABLE guasto (
     CONSTRAINT fk_tipo_guasto FOREIGN KEY (tipo_guasto_tipo) REFERENCES tipo_guasto(tipo),
     CONSTRAINT fk_satellite_nome_guasto FOREIGN KEY (satellite_nome) REFERENCES satellite(nome)
 );
+
+CREATE INDEX idx_guasto_data_guasto ON guasto(data_guasto);
+CREATE INDEX idx_guasto_tipo_guasto_tipo ON guasto(tipo_guasto_tipo);
+CREATE INDEX idx_guasto_satellite_nome ON guasto(satellite_nome);
+
 CREATE TABLE strumento_di_bordo_satellite(
     satellite_nome VARCHAR(255) NOT NULL,
     strumento_di_bordo_nome VARCHAR(255) NOT NULL,
@@ -91,3 +145,6 @@ CREATE TABLE strumento_di_bordo_satellite(
     CONSTRAINT fk_strumento_di_bordo_nome_strumento_di_bordo_satellite FOREIGN KEY (strumento_di_bordo_nome) REFERENCES strumento_di_bordo(nome),
     CONSTRAINT pk_strumento_di_bordo_satellite PRIMARY KEY (satellite_nome, strumento_di_bordo_nome)
 );
+
+CREATE INDEX idx_strumento_di_bordo_satellite_satellite_nome ON strumento_di_bordo_satellite(satellite_nome);
+CREATE INDEX idx_strumento_di_bordo_satellite_strumento_di_bordo_nome ON strumento_di_bordo_satellite(strumento_di_bordo_nome);
