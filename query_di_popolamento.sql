@@ -226,3 +226,23 @@ VALUES
     ('NOAA-19', 'Visible and Infrared Imaging Spectrometer'),
     ('Spitzer Space Telescope', 'Cloud Profiling Radar'),
     ('Tiangong-2', 'Microwave Radiometer');
+
+
+-- Strumento di bordo satellite
+INSERT INTO strumento_di_bordo_satellite (satellite_nome, strumento_di_bordo_nome)
+VALUES
+('GOES-16', 'Radar Altimeter'),
+('Hubble Space Telescope', 'Multispectral Imager'),
+('ISS', 'Thermal Infrared Sensor'),
+('Landsat 8', 'Synthetic Aperture Radar'),
+('GPS IIF-12', 'Global Navigation Satellite System'),
+('Galileo 17', 'Scatterometer'),
+('Chandra X-ray Observatory', 'Radiometer'),
+('TerraSAR-X', 'Spectrometer'),
+('Iridium 6', 'Lidar'),
+('Venus Express', 'Hyperspectral Imager'),
+('XMM-Newton', 'Magnetometer'),
+('RADARSAT-2', 'X-ray Spectrometer'),
+('NOAA-19', 'Visible and Infrared Imaging Spectrometer'),
+('Spitzer Space Telescope', 'Cloud Profiling Radar'),
+('Tiangong-2', 'Microwave Radiometer');
