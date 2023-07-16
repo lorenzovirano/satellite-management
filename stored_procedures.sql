@@ -30,12 +30,12 @@ BEGIN
     ) THEN
         SIGNAL SQLSTATE '46001' SET MESSAGE_TEXT = "Il satellite non esiste.";
     ELSE
-        SELECT satellite.nome , coordinate_orbitali.altitudine, coordinate_orbitali.inclinazione, coordinate_orbitali.eccentricità, GROUP_CONCAT(strumento_di_bordo_satellite.strumento_di_bordo_nome SEPARATOR ', ')
-        FROM satellite
-        JOIN coordinate_orbitali ON satellite.nome = coordinate_orbitali.satellite_nome
-        JOIN strumento_di_bordo_satellite ON satellite.nome = strumenti_di_bordo_satellite.satellite_nome
-        WHERE satellite.nome = p_nome_satellite
-        GROUP BY satellite.nome;
+        SELECT s.nome as satellite_nome, s.dimensioni, s.peso, s.periodo_orbitale, s.data_di_lancio, s.operatore_nome, c.altitudine, c.inclinazione, c.eccentricità, GROUP_CONCAT(si.strumento_di_bordo_nome SEPARATOR ', ') AS strumenti_di_bordo
+        FROM satellite AS s
+        JOIN coordinate_orbitali AS c ON s.nome = c.satellite_nome
+        JOIN strumento_di_bordo_satellite AS si ON s.nome = si.satellite_nome
+        WHERE s.nome = p_nome_satellite
+        GROUP BY s.nome, c.altitudine, c.inclinazione, c.eccentricità;
     END IF;
 END //
 
@@ -82,7 +82,7 @@ BEGIN
     ) THEN
         SIGNAL SQLSTATE '46004' SET MESSAGE_TEXT = "Il satellite non esiste.";
     ELSE
-        SELECT *  FROM rilevazioe WHERE satellite_nome = p_nome_satellite;
+        SELECT *  FROM rilevazione WHERE satellite_nome = p_nome_satellite;
     END IF;
 END //
 
