@@ -1,5 +1,6 @@
 DELIMITER //
 
+
 CREATE PROCEDURE InsertSatellite(
     IN p_nome VARCHAR(255),
     IN p_dimensioni BIGINT,
@@ -19,6 +20,7 @@ BEGIN
     END IF;
 END //
 
+
 CREATE PROCEDURE GetSatellite(
     IN p_nome_satellite VARCHAR(255)
 )
@@ -31,6 +33,7 @@ BEGIN
         SELECT 1 FROM satellite WHERE nome = p_nome_satellite;
     END IF;
 END //
+
 
 CREATE PROCEDURE GetCrews(
     IN p_nome_operatore VARCHAR(255)
@@ -48,6 +51,7 @@ BEGIN
         WHERE stazione_terrestre.operatore_nome = p_nome_operatore;
     END IF;
 END //
+
 
 CREATE PROCEDURE GetMissioniByNomeOperatore(
     IN p_nome_operatore VARCHAR(255)
@@ -67,5 +71,20 @@ BEGIN
         WHERE satellite.operatore_nome = p_nome_operatore;
     END IF;
 END //
+
+
+CREATE PROCEDURE GetRilevazioni(
+    IN p_nome_satellite VARCHAR(255)
+)
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1  FROM rilevazioe WHERE satellite_nome = p_nome_satellite
+    ) THEN
+        SIGNAL SQLSTATE '46005' SET MESSAGE_TEXT = "Il satellite non ha rilevazioni";
+    ELSE
+        SELECT *  FROM rilevazioe WHERE satellite_nome = p_nome_satellite;
+    END IF;
+END //
+
 
 DELIMITER ;
