@@ -73,7 +73,7 @@ BEGIN
 END //
 
 
-CREATE PROCEDURE GetRilevazioni(
+CREATE PROCEDURE GetRilevazioniBySatellite(
     IN p_nome_satellite VARCHAR(255)
 )
 BEGIN
@@ -97,6 +97,19 @@ BEGIN
         SIGNAL SQLSTATE '46006' SET MESSAGE_TEXT = "Il satellite non è stato afflitto da guasti";
     ELSE
         SELECT *  FROM guasto WHERE satellite_nome = p_nome_satellite;
+    END IF;
+END //
+
+CREATE PROCEDURE GetGuastiByStrumentoNome(
+    IN p_nome_strumento VARCHAR(255)
+)
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1  FROM rilevazioe WHERE strumento_di_bordo_nome = p_nome_strumento
+    ) THEN
+        SIGNAL SQLSTATE '46005' SET MESSAGE_TEXT = "Lo strumento di bordo non ha eseguito rilevazioni";
+    ELSE
+        SELECT *  FROM rilevazioe WHERE strumento_di_bordo_nome = p_nome_strumento;
     END IF;
 END //
 
