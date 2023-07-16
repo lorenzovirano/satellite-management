@@ -11,7 +11,7 @@ CREATE TABLE satellite (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
     dimensioni BIGINT NOT NULL,
     periodo_orbitale TIME,
-    data_di_lancio DATETIME,
+    data_di_lancio DATETIME DEFAULT CURRENT_TIMESTAMP,
     peso BIGINT NOT NULL,
     operatore_nome VARCHAR(255) NOT NULL,
     CONSTRAINT fk_operatore_nome_satellite FOREIGN KEY (operatore_nome) REFERENCES operatore(nome) ON DELETE CASCADE ON UPDATE CASCADE
@@ -33,9 +33,10 @@ CREATE INDEX idx_stazione_terrestre_operatore_nome ON stazione_terrestre(operato
 
 CREATE TABLE crew (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
-    data_di_creazione DATETIME NOT NULL,
+    data_di_creazione DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     numero_membri BIGINT NOT NULL,
     stazione_terrestre_nome VARCHAR(255) NOT NULL,
+    CONSTRAINT chk_numero_membri_positivo CHECK (numero_membri > 0),
     CONSTRAINT fk_stazione_terrestre_nome_crew FOREIGN KEY (stazione_terrestre_nome) REFERENCES stazione_terrestre(nome) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -50,7 +51,7 @@ CREATE INDEX idx_tipo_missione_tipo ON tipo_missione(tipo);
 
 CREATE TABLE missione (
     nome VARCHAR(255) NOT NULL,
-    data_inizio DATETIME NOT NULL,
+    data_inizio DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     data_fine DATETIME,
     tipo_missione_tipo VARCHAR(255) NOT NULL,
     crew_nome VARCHAR(255) NOT NULL,
@@ -69,7 +70,8 @@ CREATE INDEX idx_missione_satellite_nome ON missione(satellite_nome);
 
 CREATE TABLE strumento_di_bordo (
     nome VARCHAR(255) PRIMARY KEY NOT NULL,
-    funzionalita VARCHAR(255) NOT NULL
+    funzionalita VARCHAR(255) NOT NULL,
+    CONSTRAINT chk_lunghezza_funzionalita CHECK (LENGTH(funzionalita) <= 100)
 );
 
 CREATE INDEX idx_strumento_di_bordo_nome ON strumento_di_bordo(nome);
@@ -95,7 +97,7 @@ CREATE INDEX idx_coordinate_orbitali_satellite_nome ON coordinate_orbitali(satel
 
 CREATE TABLE rilevazione (
     valore BIGINT NOT NULL,
-    data DATETIME NOT NULL,
+    data DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     coordinate_orbitali_altitudine BIGINT NOT NULL,
     coordinate_orbitali_inclinazione BIGINT NOT NULL,
     coordinate_orbitali_eccentricità BIGINT NOT NULL,
@@ -129,6 +131,7 @@ CREATE TABLE guasto (
     data_riparazione DATETIME,
     tipo_guasto_tipo VARCHAR(255) NOT NULL,
     satellite_nome VARCHAR(255) NOT NULL,
+    CONSTRAINT chk_data_guasto CHECK (data_guasto <= CURRENT_TIMESTAMP),
     CONSTRAINT pk_guasto PRIMARY KEY (data_guasto, tipo_guasto_tipo),
     CONSTRAINT fk_tipo_guasto FOREIGN KEY (tipo_guasto_tipo) REFERENCES tipo_guasto(tipo) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_satellite_nome_guasto FOREIGN KEY (satellite_nome) REFERENCES satellite(nome) ON DELETE CASCADE ON UPDATE CASCADE
