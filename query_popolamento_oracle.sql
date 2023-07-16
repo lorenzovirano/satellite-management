@@ -153,59 +153,53 @@ VALUES
     (3800, 240, 3.0, 'Tiangong-2');
 
 -- Rilevazione
-INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome)
-VALUES
-    (150, TO_TIMESTAMP('2022-05-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 800, 30, 0.2, 'Radar Altimeter', 'GOES-16'),
-    (220, TO_TIMESTAMP('2021-12-25 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1500, 75, 0.8, 'Multispectral Imager', 'Hubble Space Telescope'),
-    (180, TO_TIMESTAMP('2022-07-30 18:45:00', 'YYYY-MM-DD HH24:MI:SS'), 1200, 60, 0.6, 'Thermal Infrared Sensor', 'ISS'),
-    (300, TO_TIMESTAMP('2022-09-01 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), 2800, 165, 2.0, 'Synthetic Aperture Radar', 'Landsat 8'),
-    (250, TO_TIMESTAMP('2022-10-19 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 1800, 90, 1.0, 'Global Navigation Satellite System', 'GPS IIF-12'),
-    (170, TO_TIMESTAMP('2022-08-15 06:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1000, 45, 0.4, 'Scatterometer', 'Galileo 17'),
-    (190, TO_TIMESTAMP('2022-10-18 11:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3400, 210, 2.6, 'Radiometer', 'Chandra X-ray Observatory'),
-    (260, TO_TIMESTAMP('2023-02-05 12:15:00', 'YYYY-MM-DD HH24:MI:SS'), 2200, 120, 1.4, 'Spectrometer', 'TerraSAR-X'),
-    (240, TO_TIMESTAMP('2022-10-10 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 2600, 150, 1.8, 'Lidar', 'Iridium 6'),
-    (280, TO_TIMESTAMP('2022-12-15 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2000, 105, 1.2, 'Hyperspectral Imager', 'Venus Express'),
-    (210, TO_TIMESTAMP('2022-05-10 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 3000, 180, 2.2, 'Magnetometer', 'XMM-Newton'),
-    (270, TO_TIMESTAMP('2023-05-05 07:30:00', 'YYYY-MM-DD HH24:MI:SS'), 3200, 195, 2.4, 'X-ray Spectrometer', 'RADARSAT-2'),
-    (230, TO_TIMESTAMP('2022-08-16 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2400, 135, 1.6, 'Visible and Infrared Imaging Spectrometer', 'NOAA-19'),
-    (200, TO_TIMESTAMP('2022-12-15 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3600, 225, 2.8, 'Cloud Profiling Radar', 'Spitzer Space Telescope'),
-    (290, TO_TIMESTAMP('2022-10-05 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 3800, 240, 3.0, 'Microwave Radiometer', 'Tiangong-2');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (150, TO_TIMESTAMP('2022-05-12 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 800, 30, 0.2, 'Radar Altimeter', 'GOES-16');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (220, TO_TIMESTAMP('2021-12-25 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1500, 75, 0.8, 'Multispectral Imager', 'Hubble Space Telescope');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (180, TO_TIMESTAMP('2022-07-30 18:45:00', 'YYYY-MM-DD HH24:MI:SS'), 1200, 60, 0.6, 'Thermal Infrared Sensor', 'ISS');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (300, TO_TIMESTAMP('2022-09-01 09:15:00', 'YYYY-MM-DD HH24:MI:SS'), 2800, 165, 2.0, 'Synthetic Aperture Radar', 'Landsat 8');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (250, TO_TIMESTAMP('2022-10-19 12:00:00', 'YYYY-MM-DD HH24:MI:SS'), 1800, 90, 1.0, 'Global Navigation Satellite System', 'GPS IIF-12');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (170, TO_TIMESTAMP('2022-08-15 06:30:00', 'YYYY-MM-DD HH24:MI:SS'), 1000, 45, 0.4, 'Scatterometer', 'Galileo 17');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (190, TO_TIMESTAMP('2022-10-18 11:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3400, 210, 2.6, 'Radiometer', 'Chandra X-ray Observatory');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (260, TO_TIMESTAMP('2023-02-05 12:15:00', 'YYYY-MM-DD HH24:MI:SS'), 2200, 120, 1.4, 'Spectrometer', 'TerraSAR-X');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (240, TO_TIMESTAMP('2022-10-10 09:30:00', 'YYYY-MM-DD HH24:MI:SS'), 2600, 150, 1.8, 'Lidar', 'Iridium 6');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (280, TO_TIMESTAMP('2022-12-15 09:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2000, 105, 1.2, 'Hyperspectral Imager', 'Venus Express');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (210, TO_TIMESTAMP('2022-05-10 11:30:00', 'YYYY-MM-DD HH24:MI:SS'), 3000, 180, 2.2, 'Magnetometer', 'XMM-Newton');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (270, TO_TIMESTAMP('2023-05-05 07:30:00', 'YYYY-MM-DD HH24:MI:SS'), 3200, 195, 2.4, 'X-ray Spectrometer', 'RADARSAT-2');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (230, TO_TIMESTAMP('2022-08-16 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), 2400, 135, 1.6, 'Visible and Infrared Imaging Spectrometer', 'NOAA-19');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (200, TO_TIMESTAMP('2022-12-15 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 3600, 225, 2.8, 'Cloud Profiling Radar', 'Spitzer Space Telescope');
+INSERT INTO rilevazione (valore, data, coordinate_orbitali_altitudine, coordinate_orbitali_inclinazione, coordinate_orbitali_eccentricità, strumento_di_bordo_nome, satellite_nome) VALUES (290, TO_TIMESTAMP('2022-10-05 11:15:00', 'YYYY-MM-DD HH24:MI:SS'), 3800, 240, 3.0, 'Microwave Radiometer', 'Tiangong-2');
 
 -- Tipo guasto
-INSERT INTO tipo_guasto (tipo)
-VALUES
-    ('Alimentazione Elettrica'),
-    ('Propulsione'),
-    ('Comunicazione'),
-    ('Controllo dell''Assetto'),
-    ('Navigazione'),
-    ('Termico'),
-    ('Carico Utile'),
-    ('Raccolta Dati'),
-    ('Telemetria e Telecontrollo'),
-    ('Protezione dalle Radiazioni'),
-    ('Apertura/Chiusura Pannelli Solari'),
-    ('Distribuzione dell''Energia'),
-    ('Navigazione Stellare'),
-    ('Protezione dai Detriti Spaziali'),
-    ('Controllo di Volo');
+INSERT INTO tipo_guasto (tipo) VALUES ('Alimentazione Elettrica');
+INSERT INTO tipo_guasto (tipo) VALUES ('Propulsione');
+INSERT INTO tipo_guasto (tipo) VALUES ('Comunicazione');
+INSERT INTO tipo_guasto (tipo) VALUES ('Controllo dell''Assetto');
+INSERT INTO tipo_guasto (tipo) VALUES ('Navigazione');
+INSERT INTO tipo_guasto (tipo) VALUES ('Termico');
+INSERT INTO tipo_guasto (tipo) VALUES ('Carico Utile');
+INSERT INTO tipo_guasto (tipo) VALUES ('Raccolta Dati');
+INSERT INTO tipo_guasto (tipo) VALUES ('Telemetria e Telecontrollo');
+INSERT INTO tipo_guasto (tipo) VALUES ('Protezione dalle Radiazioni');
+INSERT INTO tipo_guasto (tipo) VALUES ('Apertura/Chiusura Pannelli Solari');
+INSERT INTO tipo_guasto (tipo) VALUES ('Distribuzione dell''Energia');
+INSERT INTO tipo_guasto (tipo) VALUES ('Navigazione Stellare');
+INSERT INTO tipo_guasto (tipo) VALUES ('Protezione dai Detriti Spaziali');
+INSERT INTO tipo_guasto (tipo) VALUES ('Controllo di Volo');
 
 -- Guasto
-INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo)
-VALUES
-    ('2023-12-01 01:46:11', '2024-01-08 03:56:32', 'GOES-16', 'Alimentazione Elettrica'),
-    ('2022-12-31 03:16:51', NULL, 'Hubble Space Telescope', 'Propulsione'),
-    ('2022-03-30 18:11:34', '2023-07-18 03:39:01', 'ISS', 'Comunicazione'),
-    ('2023-06-08 19:15:57', '2023-08-23 18:24:54', 'Landsat 8', 'Controllo dell''Assetto'),
-    ('2023-06-10 01:41:30', '2023-09-29 19:39:17', 'GPS IIF-12', 'Navigazione'),
-    ('2023-09-27 12:21:19', '2023-10-31 01:54:50', 'Galileo 17', 'Termico'),
-    ('2023-05-11 23:18:36', '2023-12-19 12:34:39', 'Chandra X-ray Observatory', 'Alimentazione Elettrica'),
-    ('2023-03-25 22:53:30', '2024-02-02 23:31:56', 'TerraSAR-X', 'Controllo di Volo'),
-    ('2023-05-24 12:24:29', NULL, 'Iridium 6', 'Telemetria e Telecontrollo'),
-    ('2022-11-07 10:24:16', '2023-08-14 12:37:49', 'Venus Express', 'Protezione dalle Radiazioni'),
-    ('2023-04-12 07:52:37', '2023-02-28 10:37:36', 'XMM-Newton', 'Comunicazione'),
-    ('2023-02-10 01:22:38', NULL, 'RADARSAT-2', 'Distribuzione dell''Energia'),
-    ('2023-06-07 11:21:37', '2023-05-01 01:35:58', 'NOAA-19', 'Telemetria e Telecontrollo'),
-    ('2022-10-22 05:07:36', '2023-09-28 11:34:57', 'Spitzer Space Telescope', 'Protezione dai Detriti Spaziali'),
-    ('2023-11-16 20:50:33', '2024-01-13 05:20:56', 'Tiangong-2', 'Controllo di Volo');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-12-01 01:46:11', '2024-01-08 03:56:32', 'GOES-16', 'Alimentazione Elettrica');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2022-12-31 03:16:51', NULL, 'Hubble Space Telescope', 'Propulsione');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2022-03-30 18:11:34', '2023-07-18 03:39:01', 'ISS', 'Comunicazione');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-06-08 19:15:57', '2023-08-23 18:24:54', 'Landsat 8', 'Controllo dell''Assetto');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-06-10 01:41:30', '2023-09-29 19:39:17', 'GPS IIF-12', 'Navigazione');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-09-27 12:21:19', '2023-10-31 01:54:50', 'Galileo 17', 'Termico');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-05-11 23:18:36', '2023-12-19 12:34:39', 'Chandra X-ray Observatory', 'Alimentazione Elettrica');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-03-25 22:53:30', '2024-02-02 23:31:56', 'TerraSAR-X', 'Controllo di Volo');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-05-24 12:24:29', NULL, 'Iridium 6', 'Telemetria e Telecontrollo');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2022-11-07 10:24:16', '2023-08-14 12:37:49', 'Venus Express', 'Protezione dalle Radiazioni');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-04-12 07:52:37', '2023-02-28 10:37:36', 'XMM-Newton', 'Comunicazione');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-02-10 01:22:38', NULL, 'RADARSAT-2', 'Distribuzione dell''Energia');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-06-07 11:21:37', '2023-05-01 01:35:58', 'NOAA-19', 'Telemetria e Telecontrollo');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2022-10-22 05:07:36', '2023-09-28 11:34:57', 'Spitzer Space Telescope', 'Protezione dai Detriti Spaziali');
+INSERT INTO guasto (data_guasto, data_riparazione, satellite_nome, tipo_guasto_tipo) VALUES ('2023-11-16 20:50:33', '2024-01-13 05:20:56', 'Tiangong-2', 'Controllo di Volo');
 

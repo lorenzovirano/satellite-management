@@ -1,0 +1,3 @@
+CREATE TABLE tipo_guasto (
+    tipo VARCHAR2(30) PRIMARY KEY NOT NULL
+);
