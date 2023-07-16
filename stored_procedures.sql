@@ -87,4 +87,17 @@ BEGIN
 END //
 
 
+CREATE PROCEDURE GetGuasti(
+    IN p_nome_satellite VARCHAR(255)
+)
+BEGIN
+    IF NOT EXISTS (
+        SELECT 1  FROM guasto WHERE satellite_nome = p_nome_satellite
+    ) THEN
+        SIGNAL SQLSTATE '46006' SET MESSAGE_TEXT = "Il satellite non è stato afflitto da guasti";
+    ELSE
+        SELECT *  FROM guasto WHERE satellite_nome = p_nome_satellite;
+    END IF;
+END //
+
 DELIMITER ;
